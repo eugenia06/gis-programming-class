@@ -28,7 +28,6 @@ layer_with_intersects = QgsVectorLayer('Polygon?crs=EPSG:3857', "station/distric
 layer_with_intersects.updateFields()
 prov_2 = layer_with_intersects.dataProvider()
 prov_2.addAttributes(poligons.fields())
-
 for poly in poligons.getFeatures():
     p_g = poly.geometry()
     for st in station.getFeatures():
