@@ -1,7 +1,7 @@
 from random import randint
 pr = QgsProject.instance()
 #подключение исходных слоёв к коду(исходные слои открыты в qgis)
-layer = pr.mapLayersByName("station")[0] 
+layer = pr.mapLayersByName("stations")[0] 
 poligons = pr.mapLayersByName("districts")[0]
 #print(layer.featureCount())
 layer.setSubsetString('"colour" = \'orange\'') #фильтрации по цвету ветки
@@ -26,6 +26,9 @@ layer.setSubsetString('') #снятие фильтрации с layer(исход
 
 layer_with_intersects = QgsVectorLayer('Polygon?crs=EPSG:3857', "station/districts", "memory") #создание финального слоя с результатом пересечения 
 layer_with_intersects.updateFields()
+prov_2 = layer_with_intersects.dataProvider()
+prov_2.addAttributes(poligons.fields())
+
 for poly in poligons.getFeatures():
     p_g = poly.geometry()
     for st in station.getFeatures():
