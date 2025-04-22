@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/plugins/mod_layer" >
-        <file>icon.png</file>
-    </qresource>
-</RCC>
